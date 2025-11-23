@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Pharmacy Shop</title>
+    <title>Login - Pharmacy Shop</title>
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -257,14 +257,6 @@ nav {
     background: white;
 }
 
-input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    margin-right: 0.75rem;
-    cursor: pointer;
-    accent-color: #667eea;
-}
-
 footer {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px) saturate(180%);
@@ -327,11 +319,8 @@ a:hover {
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo">💊 Pharmacy Shop</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="login.html" class="btn btn-outline">Login</a></li>
-            </ul>
+            <a href="/index" class="logo">💊 Pharmacy Shop</a>
+
         </nav>
     </header>
 
@@ -339,29 +328,21 @@ a:hover {
         <div style="max-width: 500px; margin: 4rem auto;">
             <div class="card">
                 <div class="card-header">
-                    <h2>Create New Account</h2>
+                    <h2>Login to Your Account</h2>
                 </div>
-                <form>
-                    <div class="form-group">
-                        <label for="firstname">First Name</label>
-                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Enter your first name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastname">Last Name</label>
-                        <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Enter your last name" required>
-                    </div>
+                <form class = "form" th:action = "@{/login}" th:method = "POST" th:object = "${loginRequest}">
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                        <input type="email" id="email" name="email" th:field = "*{email}" class="form-control" placeholder="Enter your email" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Create a password" required>
+                        <input type="password" id="password"  th:field = "*{password}"name="password" class="form-control" placeholder="Enter your password" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
                 </form>
                 <div style="text-align: center; margin-top: 1.5rem;">
-                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                    <p>Don't have an account? <a href="/register">Register here</a></p>
                 </div>
             </div>
         </div>
